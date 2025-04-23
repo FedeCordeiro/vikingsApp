@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="start-screen">
+        <h1>⚔️ Vikings ⚔️</h1>
+        <p class="intro-text">
+            Hace siglos, los vikingos de Skjoldr navegaban en busca de gloria y riquezas. 
+            Pero ahora, una amenaza oscura surge del norte: antiguos gigantes despiertan 
+            del hielo, destruyendo aldeas a su paso. Tú, el último gran Jarl, debes liderar 
+            a tu pueblo, enfrentarte a bestias y enemigos, y salvar tu tierra antes de que 
+            todo se pierda. ¿Estás listo para forjar tu leyenda?
+        </p>
+        <button id="start-button">Iniciar Juego</button>
+        <p class="instructions">
+            Salta los Golem, utilizando la flecha hacia arriba.
+            <img src="./assets/up.svg" alt="Arrow Up" class="arrow-icon">
+        </p>
+    </div>
+    
+    <div id="game" style="display:none;"> <!-- Oculto inicialmente -->
+        <div id="cielo"></div>
+        <div id="scoreDisplay">Puntaje: 0 / 40</div> <!-- Elemento de puntaje -->
+        <div id="personaje" class="correr"></div>
+        <div id="piso"></div> 
+    </div>
+
+    <div id="game-over-screen" style="display: none;">
+        <h2>¡Game Over!</h2>
+        <p id="final-score">Puntaje Final: 0</p>
+        <button id="reset-button">Reiniciar Juego</button>
+        <button id="main-menu-button">Menú Principal</button>
+    </div>
+
+    <div id="victory-screen" style="display: none;">
+        <h2>¡Victoria!</h2>
+        <p id="victory-score">Puntaje Final: 0</p>
+        <button id="victory-reset-button">Reiniciar Juego</button>
+        <button id="victory-main-menu-button">Menú Principal</button>
+    </div>
+    
+    <script src="Personaje.js"></script>
+    <script src="Runner.js"></script>
+    <script src="Enemigo.js"></script> 
+    <script src="main.js"></script>
+</body>
+</html>

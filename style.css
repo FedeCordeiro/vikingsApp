@@ -1,0 +1,316 @@
+/* Estilo global del body */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: left; /* Alinea los elementos hacia la izquierda */
+  align-items: center; /* Centra verticalmente */
+  background-image: url("assets/fondoInicio.jpg"); /* Imagen de fondo */
+  background-size: cover; /* La imagen cubre todo el contenedor */
+  background-position: center; /* Centrado de la imagen */
+  overflow-y: hidden; /* Deshabilita scroll vertical */
+  overflow-x: hidden; /* Deshabilita scroll horizontal */
+}
+
+/* Pantalla de inicio */
+#start-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #1e1e1e; /* Fondo oscuro */
+  color: #f5f5f5; /* Texto claro */
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto; /* Centrado horizontal */
+  opacity: 95%;
+  box-shadow: 0px 5px 10px black;
+}
+
+/* Título del juego */
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffc107; /* Amarillo dorado */
+  text-shadow: 2px 2px 5px #000; /* Sombra de texto */
+}
+
+/* Texto de introducción */
+.intro-text {
+  font-family: 'Merriweather', serif;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #ddd; /* Gris claro */
+}
+
+/* Botón de inicio */
+#start-button {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: #fff;
+  background-color: #c0392b; /* Rojo oscuro */
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover del botón de inicio */
+#start-button:hover {
+  background-color: #e74c3c; /* Rojo más claro */
+}
+
+/* Instrucciones con ícono de flecha */
+.instructions {
+  margin-top: 20px;
+  font-family: 'Merriweather', serif;
+  font-size: 1.1rem;
+  color: #bbb; /* Gris medio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo del ícono de flecha */
+.arrow-icon {
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  filter: invert(100%); /* Invierte colores */
+}
+
+/* Botones generales */
+button {
+  background-color: rgb(163, 0, 0); /* Rojo oscuro */
+  width: 200px;
+  height: 50px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover de los botones */
+button:hover {
+  color: white;
+}
+
+/* Canvas del juego */
+#game, #cielo, #piso {
+  width: 100%;
+}
+
+#game {
+  display: none; /* Oculto por defecto */
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Cielo animado en el fondo */
+#cielo {
+  height: 110%;
+  background: url("assets/fondo2.jpg") repeat-x;
+  background-size: 1280px 100%;
+  position: absolute;
+  animation: sky 15s linear infinite;
+}
+
+@keyframes sky {
+  0% {
+    background-position: 1280px;
+  }
+  100% {
+    background-position: 0;
+  }
+}
+
+/* Piso animado en el fondo */
+#piso {
+  height: 10%;
+  background: url("assets/floor.png") repeat-x;
+  background-size: 831px 100%;
+  animation: floor 2s linear infinite;
+  position: absolute;
+  bottom: 0px;
+  z-index: 0;
+}
+
+@keyframes floor {
+  0% {
+    background-position: 831px;
+  }
+  100% {
+    background-position: 0;
+  }
+}
+
+/* Personaje principal */
+#personaje {
+  width: 78px;
+  height: 78px;
+  z-index: 1;
+  position: absolute;
+  bottom: 8%; /* Sobre el suelo */
+  left: 100px;
+  background: url("assets/vk1.png") repeat-x;
+}
+
+/* Animación corriendo */
+.correr {
+  animation: correr 0.8s steps(5) infinite;
+}
+
+@keyframes correr {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -392px;
+  }
+}
+
+/* Animación saltar */
+.saltar {
+  animation: saltar 400ms cubic-bezier(0, 0, 0.5, 1) forwards;
+}
+
+@keyframes saltar {
+  from {
+    bottom: 8%;
+  }
+  to {
+    bottom: 35%;
+  }
+}
+
+/* Animación caer */
+.caer {
+  animation: caer 400ms cubic-bezier(0, 0, 0.5, 1) forwards;
+}
+
+@keyframes caer {
+  from {
+    bottom: 35%;
+  }
+  to {
+    bottom: 8%;
+  }
+}
+
+/* Enemigos del juego */
+.enemigo {
+  position: absolute;
+  bottom: 8%; /* Al nivel del suelo */
+  width: 87px;
+  height: 78px;
+  background-image: url("assets/golem.png");
+  animation: enemigo-movimiento 4s linear forwards, correrEnemigo 0.4s steps(2) infinite;
+}
+
+@keyframes enemigo-movimiento {
+  0% {
+    left: 100%; /* Fuera de la pantalla a la derecha */
+  }
+  100% {
+    left: -10%; /* Fuera de la pantalla a la izquierda */
+  }
+}
+
+@keyframes correrEnemigo {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -178px;
+  }
+}
+
+/* Marcador de puntaje */
+#scoreDisplay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  color: white;
+}
+
+/* Pantalla de Game Over */
+#game-over-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+#game-over-screen h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Botones de Game Over */
+#reset-button, #main-menu-button {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #e74c3c;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#reset-button:hover, #main-menu-button:hover {
+  background-color: #c0392b;
+}
+
+/* Pantalla de Victoria */
+#victory-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 128, 0, 0.8);
+  color: white;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+#victory-screen h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Botones de Victoria */
+#victory-reset-button, #victory-main-menu-button {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #2ecc71;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#victory-reset-button:hover, #victory-main-menu-button:hover {
+  background-color: #27ae60;
+}
